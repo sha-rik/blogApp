@@ -1,5 +1,5 @@
-let Post= require('../models/postModel');
-let Comment= require('../models/commentModel');
+let Post = require('../models/postModel');
+let Comment = require('../models/commentModel');
 
 exports.addComment = async (req, res) => {
     try {
@@ -20,10 +20,10 @@ exports.addComment = async (req, res) => {
             { $push: { comments: saveComment._id } },
             { new: true }
         )
-        .populate('comments')
-        .exec();
-        
-        if(!updatePost) {
+            .populate('comments')
+            .exec();
+
+        if (!updatePost) {
             return res.status(404).json({
                 success: false,
                 message: 'Post not found',
@@ -38,7 +38,7 @@ exports.addComment = async (req, res) => {
         });
     }
     catch (error) {
-        
+
         res.status(500).json({
             error: error.message,
             console: console.log("  Error while adding comment"),

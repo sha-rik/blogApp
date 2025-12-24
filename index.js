@@ -1,12 +1,14 @@
-let express= require('express');
 require('dotenv').config();
-
-let app= express();
 let PORT= process.env.PORT || 3000;
 
-
-
+let express= require('express');
+let app= express();
 app.use(express.json());
+let bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
+let dBconnect = require('./config/database');
+dBconnect();
 
 // importing routes
 let blogRoutes= require('./routes/blog_routes');

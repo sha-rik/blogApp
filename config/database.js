@@ -1,4 +1,4 @@
-let mongoose= required('mongoose');
+let mongoose= require('mongoose');
 
 require('dotenv').config();
 
